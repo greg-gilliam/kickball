@@ -23,9 +23,9 @@ function App() {
           </NavLink>{" "}
         </header>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route path="/teams/:teamId" component={TeamDetail} />
           <Route path="/teams" component={TeamList} />
-          <Route path="/teams/:id" component={TeamDetail} />
+          <Route path="/" component={Home} />
         </Switch>
         <footer>Footer</footer>
       </Router>
