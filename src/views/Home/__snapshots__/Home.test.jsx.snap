@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render a single homepage 1`] = `
+exports[`should render a simple homepage 1`] = `
 <div>
   <p>
     Home
