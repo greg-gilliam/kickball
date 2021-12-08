@@ -1,5 +1,9 @@
+import { useParams } from "react-router-dom";
+
 function TeamDetail() {
-  return <p>Team details!</p>;
+  const { teamId } = useParams();
+  console.log({ teamId });
+  return <p>Team details: {teamId}</p>;
 }
 
 export default TeamDetail;
