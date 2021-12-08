@@ -23,7 +23,12 @@ function App() {
           </NavLink>{" "}
         </header>
         <Switch>
-          <Route path="/teams/:teamId" component={TeamDetail} />
+          <Route
+            path="/teams/:teamId"
+            render={(routerProps) => (
+              <TeamDetail label="My label" {...routerProps} />
+            )}
+          />
           <Route path="/teams" component={TeamList} />
           <Route path="/" component={Home} />
         </Switch>

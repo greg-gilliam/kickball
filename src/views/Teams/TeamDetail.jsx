@@ -1,10 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 
-function TeamDetail() {
-  const { teamId } = useParams();
+function TeamDetail(props) {
+  const { teamId } = props.match.params;
   return (
     <>
       <p>
+        <h4>{props.label}</h4>
         <Link to="/teams" className="App-link">
           Back to Teams
         </Link>
