@@ -8,5 +8,5 @@ it("should render a detailed view of an individual team", () => {
       <TeamDetail label="My Label" match={{ params: { teamId: "teamId" } }} />
     </MemoryRouter>
   );
-  screen.getByText("Team Detail:");
+  screen.getByText(/Team details/i);
 });
