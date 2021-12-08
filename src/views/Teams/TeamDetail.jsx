@@ -4,8 +4,8 @@ function TeamDetail(props) {
   const { teamId } = props.match.params;
   return (
     <>
+      <h4>{props.label}</h4>
       <p>
-        <h4>{props.label}</h4>
         <Link to="/teams" className="App-link">
           Back to Teams
         </Link>
