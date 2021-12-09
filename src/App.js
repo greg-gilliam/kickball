@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Home from "./views/Home/Home";
+import AddTeam from "./views/Teams/AddTeam";
 import TeamDetail from "./views/Teams/TeamDetail";
 import TeamList from "./views/Teams/TeamList";
 
@@ -23,6 +24,7 @@ function App() {
           </NavLink>{" "}
         </header>
         <Switch>
+          <Route path="/teams/new" component={AddTeam} />
           <Route
             path="/teams/:id"
             render={(routerProps) => (
