@@ -7,15 +7,11 @@ function TeamDetail(props) {
   const [team, setTeam] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  console.log(id);
-
   useEffect(() => {
     getTeamById(id)
       .then((resp) => setTeam(resp))
       .finally(() => setLoading(false));
   }, [id]);
-
-  console.log("!!!", team);
 
   if (loading) return <h1>Loading team...</h1>;
 
