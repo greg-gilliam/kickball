@@ -24,7 +24,7 @@ function App() {
         </header>
         <Switch>
           <Route
-            path="/teams/:teamId"
+            path="/teams/:id"
             render={(routerProps) => (
               <TeamDetail label="My label" {...routerProps} />
             )}
