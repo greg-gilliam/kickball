@@ -23,21 +23,6 @@ function TeamList() {
             </li>
           );
         })}
-        <li>
-          <Link to="/teams/1" className="App-link">
-            Team 1
-          </Link>
-        </li>
-        <li>
-          <Link to="/teams/2" className="App-link">
-            Team 2
-          </Link>
-        </li>
-        <li>
-          <Link to="/teams/3" className="App-link">
-            Team 3
-          </Link>
-        </li>
       </ul>
     </>
   );
