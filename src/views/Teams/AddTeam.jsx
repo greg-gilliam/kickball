@@ -46,7 +46,7 @@ export default function AddTeam() {
             onChange={({ target }) => setState(target.value)}
           />
 
-          <input type="submit" value="Add a team" />
+          <input type="submit" value="Add" aria-label="Add a team" />
         </form>
       </fieldset>
     </>

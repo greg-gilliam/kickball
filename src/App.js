@@ -11,6 +11,7 @@ import TeamDetail from "./views/Teams/TeamDetail";
 import TeamList from "./views/Teams/TeamList";
 
 function App() {
+  //ORDER MATTERS FOR THE ROUTES
   return (
     <div className="App">
       <Router>
@@ -24,6 +25,7 @@ function App() {
           </NavLink>{" "}
         </header>
         <Switch>
+          <Route path="/teams" component={TeamList} />
           <Route path="/teams/new" component={AddTeam} />
           <Route
             path="/teams/:id"
@@ -31,7 +33,6 @@ function App() {
               <TeamDetail label="My label" {...routerProps} />
             )}
           />
-          <Route path="/teams" component={TeamList} />
           <Route path="/" component={Home} />
         </Switch>
         <footer>Footer</footer>
