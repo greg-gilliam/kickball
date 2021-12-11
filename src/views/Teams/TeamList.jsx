@@ -1,13 +1,27 @@
-const { Link } = require("react-router-dom");
-const { useEffect, useState } = require("react");
-const { getTeams } = require("../../services/teams");
+const { Link } = require('react-router-dom');
+const { useEffect, useState } = require('react');
+const { getTeams, deleteTeamById } = require('../../services/teams');
 
 function TeamList() {
   const [teams, setTeams] = useState([]);
 
+  const loadTeams = async () => {
+    const resp = await getTeams();
+    setTeams(resp);
+  };
+
   useEffect(() => {
-    getTeams().then((resp) => setTeams(resp));
+    loadTeams();
   }, []);
+
+  const handleDelete = async ({ id, name }) => {
+    const shouldDelete = window.confirm(`Are you sure you want to delete ${name}?`);
+
+    if (shouldDelete) {
+      await deleteTeamById(id);
+      await loadTeams();
+    }
+  };
 
   return (
     <>
@@ -17,12 +31,14 @@ function TeamList() {
       </Link>
       <ul>
         {teams.map((team) => {
-          console.log("XXX", team);
           return (
             <li key={team.id}>
               <Link to={`/teams/${team.id}`} className="App-link">
                 {team.name}
               </Link>
+              <button type="button" onClick={() => handleDelete({ id: team.id, name: team.name })}>
+                Delete
+              </button>
             </li>
           );
         })}

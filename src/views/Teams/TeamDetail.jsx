@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { getTeamById } from "../../services/teams";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { getTeamById } from '../../services/teams';
 
 function TeamDetail(props) {
   const { id } = props.match.params;
@@ -25,7 +25,7 @@ function TeamDetail(props) {
       </p>
       <h1>{team.name}</h1>
       <p>
-        From {team.city}, {team.state}{" "}
+        From {team.city}, {team.state}{' '}
       </p>
       <ul>
         {team.players.map((player) => {
