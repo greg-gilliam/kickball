@@ -1,5 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
+import { setupServer } from 'msw/node';
+import { rest } from 'msw';
 import TeamDetail from './TeamDetail';
 
 it('should render a detailed view of an individual team', async () => {
