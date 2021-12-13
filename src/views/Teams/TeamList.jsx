@@ -26,7 +26,7 @@ function TeamList() {
     }
   };
 
-  const handleEdit = async ({ id, name, city, state }) => {
+  const handleEdit = async ({ id, name }) => {
     const shouldEdit = window.confirm(`Are you sure you want to edit ${name}?`);
 
     if (shouldEdit) {
