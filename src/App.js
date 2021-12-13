@@ -18,6 +18,7 @@ function App() {
           <NavLink to="/teams" className="App-link" exact>
             Teams
           </NavLink>{' '}
+          <NavLink to="/players" className="App-link" exact></NavLink>{' '}
         </header>
         <Switch>
           <Route path="/teams" component={TeamList} />
@@ -25,6 +26,12 @@ function App() {
           <Route
             path="/teams/:id"
             render={(routerProps) => <TeamDetail label="My label" {...routerProps} />}
+          />
+          <Route path="/players" component={PlayerList} />
+          <Route path="/players/new" component={AddPlayer} />
+          <Route
+            path="/players/:id"
+            render={(routerProps) => <PlayerDetail label="Player label" {...routerProps} />}
           />
           <Route path="/" component={Home} />
         </Switch>

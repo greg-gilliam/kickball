@@ -3,14 +3,7 @@
 exports[`should list some teams 1`] = `
 <div>
   <h1>
-    Teams:
+    Loading teams...
   </h1>
-  <a
-    class="App-link"
-    href="/teams/new"
-  >
-    Add a team!
-  </a>
-  <ul />
 </div>
 `;

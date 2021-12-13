@@ -35,6 +35,8 @@ function TeamList() {
     }
   };
 
+  if (loading) return <h1>Loading teams...</h1>;
+
   return (
     <>
       <h1>Teams:</h1>

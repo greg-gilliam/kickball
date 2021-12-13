@@ -49,3 +49,19 @@ it('should list some teams', () => {
 
   expect(container).toMatchSnapshot();
 });
+
+it('should be able to delete a team', async () => {
+  window.confirm = jest.fn(() => true);
+  render(
+    <MemoryRouter>
+      <TeamList />
+    </MemoryRouter>
+  );
+
+  await screen.findByText(/Delete My Other Team/i);
+  const deleteBtn = screen.getByRole('button', { name: 'Delete My Other Team' });
+
+  userEvent.click(deleteBtn);
+
+  expect(window.confirm).toBeCalled();
+});
