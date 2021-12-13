@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { getPlayers, deletePlayerById, updatePlayerById } from '../../services/players';
+import { getPlayers, deletePlayerById } from '../../services/players';
 
 function PlayerList() {
   const [loading, setLoading] = useState(true);
