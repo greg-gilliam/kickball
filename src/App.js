@@ -26,17 +26,18 @@ function App() {
           </NavLink>{' '}
         </header>
         <Switch>
-          <Route path="/teams" component={TeamList} />
-          <Route path="/teams/new" component={AddTeam} />
+          <Route path="/teams/new" exact component={AddTeam} />
           <Route
+            exact
             path="/teams/:id"
             render={(routerProps) => <TeamDetail label="My label" {...routerProps} />}
           />
-        </Switch>
-        <Switch>
-          <Route path="/players" component={PlayerList} />
-          <Route path="/players/new" component={AddPlayer} />
+          <Route path="/teams" exact component={TeamList} />
+
+          <Route path="/players/new" exact component={AddPlayer} />
+          <Route path="/players" exact component={PlayerList} />
           <Route
+            exact
             path="/players/:id"
             render={(routerProps) => <PlayerDetail label="Player label" {...routerProps} />}
           />
