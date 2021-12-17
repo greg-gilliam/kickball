@@ -9,7 +9,7 @@ export default function AddPlayer() {
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [teams, setTeams] = useState([]);
-  const [teamId, setTeamId] = useState(null);
+  const [teamId, setTeamId] = useState(0);
   const [position, setPosition] = useState('');
   const history = useHistory();
 
@@ -19,7 +19,7 @@ export default function AddPlayer() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const resp = await createPlayer({ name, city, state, teams, teamId });
+    const resp = await createPlayer({ name, city, state, teams, teamId, position });
     history.push(`/players/${resp[0].id}`);
   };
 

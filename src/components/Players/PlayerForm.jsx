@@ -5,12 +5,13 @@ export default function PlayerForm({
   city,
   state,
   teams,
+  teamId,
   position,
   handleSubmit,
   setName,
   setCity,
   setState,
-  setTeam,
+  setTeamId,
   setPosition,
 }) {
   return (
@@ -50,23 +51,24 @@ export default function PlayerForm({
             onChange={({ target }) => setPosition(target.value)}
           />{' '}
           {teams ? (
-            <select>
+            <div>
               <label htmlFor="team">Team:</label>
               <select
                 id="team-select"
                 name="team"
-                value={teams}
-                onChange={({ target }) => setTeam(target.value)}
-              />
-              <option key={0} value={0}>
-                Please choose a team
-              </option>
-              {teams.map((team) => (
-                <option key={team.id} value={team.id}>
-                  {team.name}
+                value={teamId}
+                onChange={({ target }) => setTeamId(target.value)}
+              >
+                <option key={0} value={0}>
+                  Please choose a team
                 </option>
-              ))}
-            </select>
+                {teams.map((team) => (
+                  <option key={team.id} value={team.id}>
+                    {team.name}
+                  </option>
+                ))}
+              </select>
+            </div>
           ) : (
             ''
           )}

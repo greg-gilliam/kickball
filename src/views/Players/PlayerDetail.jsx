@@ -5,8 +5,9 @@ import { getTeamById } from '../../services/teams';
 
 function PlayerDetail(props) {
   const { id } = props.match.params;
-  const [player, setPlayer] = useState(null);
-  const [team, setTeam] = useState(null);
+  const [player, setPlayer] = useState({});
+  const [team, setTeam] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function getPlayer() {
@@ -14,17 +15,20 @@ function PlayerDetail(props) {
       setPlayer(playerData);
     }
     getPlayer();
+    setLoading(false);
   }, [id]);
 
   useEffect(() => {
+    setLoading(true);
     async function getTeam() {
-      const teamData = await getTeamById(id);
+      const teamData = await getTeamById(player.team_id);
       setTeam(teamData);
     }
     getTeam();
-  }, [id]);
+    setLoading(false);
+  }, [player]);
 
-  if (!player) return <h1>Loading Player...</h1>;
+  if (loading) return <h1>Loading Player...</h1>;
 
   return (
     <>
@@ -39,7 +43,7 @@ function PlayerDetail(props) {
         From {player.city}, {player.sate} {player.name} is a {player.position} on the {team.name}{' '}
       </p>
       <ul>
-        {player.map((player) => {
+        {team.players.map((player) => {
           return (
             <li key={player.id}>
               {player.position} - {player.name} - {player.team}{' '}
