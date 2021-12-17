@@ -4,12 +4,14 @@ export default function PlayerForm({
   name,
   city,
   state,
-  team,
+  teams,
+  position,
   handleSubmit,
   setName,
   setCity,
   setState,
   setTeam,
+  setPosition,
 }) {
   return (
     <div>
@@ -31,6 +33,7 @@ export default function PlayerForm({
             value={city}
             onChange={({ target }) => setCity(target.value)}
           />
+
           <label htmlFor="state">State:</label>
           <input
             id="state"
@@ -39,14 +42,27 @@ export default function PlayerForm({
             value={state}
             onChange={({ target }) => setState(target.value)}
           />
-          <label htmlFor="team">Team:</label>
-          <input
-            id="team"
-            name="team"
-            type="text"
-            value={team}
-            onChange={({ target }) => setTeam(target.value)}
-          />
+          {teams ? (
+            <select>
+              <label htmlFor="team">Team:</label>
+              <select
+                id="team-select"
+                name="team"
+                value={teams}
+                onChange={({ target }) => setTeam(target.value)}
+              />
+              <option key={0} value={0}>
+                Please choose a team
+              </option>
+              {teams.map((team) => (
+                <option key={team.id} value={team.id}>
+                  {team.name}
+                </option>
+              ))}
+            </select>
+          ) : (
+            ''
+          )}
 
           <input type="submit" value="Add" aria-label="Add a player" />
         </form>
