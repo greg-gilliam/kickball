@@ -7,21 +7,24 @@ function PlayerDetail(props) {
   const { id } = props.match.params;
   const [player, setPlayer] = useState(null);
   const [team, setTeam] = useState(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getPlayerById(id)
-      .then((resp) => setPlayer(resp))
-      .finally(() => setLoading(false));
+    async function getPlayer() {
+      const playerData = await getPlayerById(id);
+      setPlayer(playerData);
+    }
+    getPlayer();
   }, [id]);
 
   useEffect(() => {
-    getTeamById(id)
-      .then((resp) => setTeam(resp))
-      .finally(() => setLoading(false));
+    async function getTeam() {
+      const teamData = await getTeamById(id);
+      setTeam(teamData);
+    }
+    getTeam();
   }, [id]);
 
-  if (loading) return <h1>Loading Player...</h1>;
+  if (!player) return <h1>Loading Player...</h1>;
 
   return (
     <>
