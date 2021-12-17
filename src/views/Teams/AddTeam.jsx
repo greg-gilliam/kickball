@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import TeamForm from '../../components/Teams/TeamForm';
 import { createTeam } from '../../services/teams';

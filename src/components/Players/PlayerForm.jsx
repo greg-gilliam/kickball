@@ -33,7 +33,6 @@ export default function PlayerForm({
             value={city}
             onChange={({ target }) => setCity(target.value)}
           />
-
           <label htmlFor="state">State:</label>
           <input
             id="state"
@@ -42,6 +41,14 @@ export default function PlayerForm({
             value={state}
             onChange={({ target }) => setState(target.value)}
           />
+          <label htmlFor="position">Position:</label>
+          <input
+            id="position"
+            name="position"
+            type="text"
+            value={position}
+            onChange={({ target }) => setPosition(target.value)}
+          />{' '}
           {teams ? (
             <select>
               <label htmlFor="team">Team:</label>
@@ -63,7 +70,6 @@ export default function PlayerForm({
           ) : (
             ''
           )}
-
           <input type="submit" value="Add" aria-label="Add a player" />
         </form>
       </div>

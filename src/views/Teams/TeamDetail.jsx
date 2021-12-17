@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getTeamById } from '../../services/teams';
+// import { getTeamById } from '../../services/teams';
 
 function TeamDetail(props) {
   const { id } = props.match.params;
@@ -8,9 +8,12 @@ function TeamDetail(props) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getTeamById(id)
-      .then((resp) => setTeam(resp))
-      .finally(() => setLoading(false));
+    async function getTeamById() {
+      const teamData = await getTeamById(id);
+      setTeam(teamData);
+      setLoading(false);
+    }
+    getTeamById();
   }, [id]);
 
   if (loading) return <h1>Loading team...</h1>;
