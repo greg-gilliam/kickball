@@ -3,11 +3,10 @@ import { useEffect, useState } from 'react';
 import { getPlayers, deletePlayerById } from '../../services/players';
 
 function PlayerList() {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState([]);
   const [players, setPlayers] = useState([]);
 
   const loadPlayers = async () => {
-    setLoading(true);
     const resp = await getPlayers();
     setPlayers(resp);
     setLoading(false);
@@ -21,6 +20,7 @@ function PlayerList() {
     const shouldDelete = window.confirm(`Are you sure you want to delete ${name}?`);
 
     if (shouldDelete) {
+      setLoading(true);
       await deletePlayerById(id);
       await loadPlayers();
     }
@@ -35,22 +35,27 @@ function PlayerList() {
         Add a Player
       </Link>
       <ul>
-        {players.map((player) => {
-          return (
-            <li key={player.id}>
-              <Link to={`/players/${player.id}`} className="App-link">
-                {player.name}
-              </Link>
-              <button
-                type="button"
-                onClick={() => handleDelete({ id: player.id, name: player.name })}
-              >
-                {' '}
-                Delete{' '}
-              </button>
-            </li>
-          );
-        })}
+        {players.map((player) => (
+          <li key={player.id}>
+            {player.name}
+            <button>
+              <Link to={`/players/${player.id}`}>{player.name}</Link>
+            </button>
+            <button>
+              <Link to={`/players/${player.id}`}>View</Link>
+            </button>
+            <button>
+              <Link to={`/players/edit/${player.id}`}>Edit</Link>
+            </button>
+            <button
+              type="button"
+              onClick={() => handleDelete({ id: player.id, name: player.name })}
+            >
+              {' '}
+              Delete{' '}
+            </button>
+          </li>
+        ))}
       </ul>
     </>
   );

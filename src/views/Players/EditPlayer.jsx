@@ -29,6 +29,8 @@ function EditPlayer() {
     history.push(`/players/${resp[0].id}`);
   };
 
+  if (loading) return <h1>Loading Player...</h1>;
+
   return (
     <>
       <fieldset>
