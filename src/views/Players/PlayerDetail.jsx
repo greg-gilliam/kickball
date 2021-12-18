@@ -9,10 +9,15 @@ function PlayerDetail(props) {
   const [team, setTeam] = useState({});
   const [loading, setLoading] = useState(true);
 
+  console.log('####', id);
+
   useEffect(() => {
     async function getPlayer() {
       const playerData = await getPlayerById(id);
-      setPlayer(playerData);
+
+      console.log('@@@', playerData);
+      await setPlayer(playerData);
+      return playerData;
     }
     getPlayer();
     setLoading(false);
@@ -30,6 +35,8 @@ function PlayerDetail(props) {
 
   if (loading) return <h1>Loading Player...</h1>;
 
+  console.log('!!!', player);
+
   return (
     <>
       <h4>{props.label}</h4>
@@ -40,16 +47,19 @@ function PlayerDetail(props) {
       </p>
       <h1>{player.name}</h1>
       <p>
-        From {player.city}, {player.sate} {player.name} is a {player.position} on the {team.name}{' '}
+        From {player.teams.city}, {player.teams.state} {player.name} is a {player.position} on the{' '}
+        {team.name}{' '}
       </p>
       <ul>
-        {team.players.map((player) => {
-          return (
-            <li key={player.id}>
-              {player.position} - {player.name} - {player.team}{' '}
-            </li>
-          );
-        })}
+        <div>
+          {team?.players?.map((player) => {
+            return (
+              <li key={player.id}>
+                {player.position} - {player.name} - {player.team}{' '}
+              </li>
+            );
+          })}
+        </div>
       </ul>
     </>
   );

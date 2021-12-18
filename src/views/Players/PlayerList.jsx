@@ -4,11 +4,14 @@ import { getPlayers, deletePlayerById } from '../../services/players';
 
 function PlayerList() {
   const [loading, setLoading] = useState([]);
-  const [players, setPlayers] = useState([]);
+  const [player, setPlayer] = useState([]);
+  const [team, setTeam] = useState({});
 
   const loadPlayers = async () => {
     const resp = await getPlayers();
-    setPlayers(resp);
+    setLoading(true);
+    setTeam(resp);
+    setPlayer(resp);
     setLoading(false);
   };
 
@@ -17,7 +20,7 @@ function PlayerList() {
   }, []);
 
   const handleDelete = async ({ id, name }) => {
-    const shouldDelete = window.confirm(`Are you sure you want to delete ${name}?`);
+    const shouldDelete = window.confirm`Are you sure you want to delete ${name} from ${team}?`();
 
     if (shouldDelete) {
       setLoading(true);
@@ -35,15 +38,9 @@ function PlayerList() {
         Add a Player
       </Link>
       <ul>
-        {players.map((player) => (
+        {player.map((player) => (
           <li key={player.id}>
             {player.name}
-            <button>
-              <Link to={`/players/${player.id}`}>{player.name}</Link>
-            </button>
-            <button>
-              <Link to={`/players/${player.id}`}>View</Link>
-            </button>
             <button>
               <Link to={`/players/edit/${player.id}`}>Edit</Link>
             </button>
