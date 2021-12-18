@@ -9,13 +9,10 @@ function PlayerDetail(props) {
   const [team, setTeam] = useState({});
   const [loading, setLoading] = useState(true);
 
-  console.log('####', id);
-
   useEffect(() => {
     async function getPlayer() {
       const playerData = await getPlayerById(id);
 
-      console.log('@@@', playerData);
       await setPlayer(playerData);
       return playerData;
     }
@@ -34,8 +31,6 @@ function PlayerDetail(props) {
   }, [player]);
 
   if (loading) return <h1>Loading Player...</h1>;
-
-  console.log('!!!', player);
 
   return (
     <>
